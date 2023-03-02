@@ -97,8 +97,8 @@ try {
   arabic: true,
   method: 2,
   school: 1,
-  city: Edmonton,
-  country: Canada,    
+  city: 'Edmonton',
+  country: 'Canada',    
   militaryTime: false,
   imsak: false,
   sunset: false,
@@ -135,7 +135,7 @@ try {
 
     prayerTime = new Date();
     prayerTime.setHours(hour, mins, 0, 0);
-    prayerDiff = Math.floor(((currTime - prayerTime)/1000)/60);
+    prayerDiff = Math.floor(((currDate - prayerTime)/1000)/60);
 
     
     if ((prayerDiff >= 0) && (prayerDiff <= min)) {
