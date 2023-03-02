@@ -111,6 +111,7 @@ try {
 
 <br>
 <p align="center">Edmonton, Ab, Canada<p>
+<p align="center" id="prayer"></p>
 <div align="center" id="table"></div>
 
 <script type="text/javascript">
@@ -150,7 +151,8 @@ try {
   }
 
 	html += '</table>';
-
+  
+  document.getElementById('prayer').innerHtml  = '<strong>' + currPrayer + '</strong>';
 	document.getElementById('table').innerHTML = html;
 
 </script>
