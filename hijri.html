@@ -1,0 +1,163 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Today's Date In Hijri Example</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  html,* { font-family: 'Inter'; box-sizing: border-box; }
+body { background-color: #fafafa; line-height:1.6;}
+.lead { font-size: 1.5rem; font-weight: 300; }
+.container { margin: 150px auto; max-width: 960px; }
+.my-date, .my-date2 { color: #4F46E5; font-size: 1.25rem; }
+</style>
+</head>
+
+<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/time-clock/today-date-hijri.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+  <div class="container">
+    <h1>Today's Date In Hijri Example2</h1>
+    <p class="lead">A tiny jQuery plugin that displays today's date in Muslim Hijri Calendar.</p>
+    <h2>Today's Date</h2>
+  <div class="my-date"></div>
+  <h2>Gregorian: true</h2>
+  <div class="my-date2"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="jquery.hijri.date.js"></script>
+<script>
+$('.my-date').hijriDate();
+$('.my-date2').hijriDate({gregorian: true, showWeekDay: true,
+  showGregDate: true,
+  separator: '&nbsp;|&nbsp;',
+  weekDayLang: 'en',
+  hijriLang: 'en',
+  gregLang: 'en',
+  correction: +1});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+  
+  <!-- jquery file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- jquery.prayer.times file -->
+<script src="jquery.prayer.times.min.js"></script>
+  <script>
+    $('.prayer-times').prayerTimes({
+  arabic: true,
+  method: 2,
+  school: 1,
+  city: Edmonton,
+  country: Canada,    
+  militaryTime: false,
+  imsak: false,
+  sunset: false,
+  midnight: false
+});
+  </script>
+  <div class="prayer-times"></div>
+  
+   <script type="text/javascript" src="../PrayTimes.js"></script>
+
+<br>
+<p align="center">Edmonton, Ab, Canada<p>
+<div align="center" id="table"></div>
+
+<script type="text/javascript">
+	
+	var currDate = new Date(); // today
+	var times = prayTimes.getTimes(currDate, [53, -80], -5);
+	var prayers = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+	var currPrayer = prayers[0]
+  var nextPrayer = prayers[1];
+  var min = Number.POSITIVE_INFINITY;
+
+  prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
+
+	var html = '<table id="timetable">';
+	html += '<tr><th colspan="2">'+ currDate.toLocaleDateString()+ '</th></tr>';
+	
+  for(var prayer in prayers)	{
+
+    prayerTimeRaw = times[prayers[prayer].toLowerCase()].split(':');
+    hour = parseInt(prayerTimeRaw[0]);
+    mins = parseInt(prayerTimeRaw[1]);
+
+    prayerTime = new Date();
+    prayerTime.setHours(hour, mins, 0, 0);
+    prayerDiff = Math.floor(((currTime - prayerTime)/1000)/60);
+
+    
+    if ((prayerDiff >= 0) && (prayerDiff <= min)) {
+        min = prayerDiff;
+        currPrayer = prayers[prayer];
+        nextPrayer = prayers[(prayer + 1) % 7];
+    }
+
+    if (prayers[prayer] == currPrayer) {
+      html += '<tr><td><strong>' + prayers[prayer] + '</strong></td>';
+    } else {
+      html += '<tr><td>'+ prayer[prayers]+ '</td>';
+    }
+
+		html += '<td>'+ times[prayers[prayer].toLowerCase()]+ '</td></tr>';
+	
+  }
+
+	html += '</table>';
+
+	document.getElementById('table').innerHTML = html;
+
+</script>
+</body>
+</html>

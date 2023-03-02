@@ -1,41 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-        <title>About me</title>
-        <meta charset="utf-8" />
-        <link href="https://um4r12.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="About me Full Atom Feed" />
-
-  <link rel="stylesheet" type="text/css" href="https://um4r12.github.io/theme/style.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px Helvetica; color: #eae96f; -webkit-text-stroke: #eae96f}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
+<body>
+786 
+<script src="/adhan/lib/bundles/adhan.umd.min.js"></script>
+<script>
+  var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
+</script>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://um4r12.github.io/">About me <strong></strong></a></h1>
-        </header><!-- /#banner -->
-        <nav id="menu"><ul>
-            <li><a href="https://um4r12.github.io/category/blog.html">Blog</a></li>
-        </ul></nav><!-- /#menu -->
-<section id="content">
-<h2>All articles</h2>
+  <script type="text/javascript" src="../PrayTimes.js"></script>
 
-<ol id="post-list">
-        <li><article class="hentry">
-                <header> <h2 class="entry-title"><a href="https://um4r12.github.io/background.html" rel="bookmark" title="Permalink to Background">Background</a></h2> </header>
-                <footer class="post-info">
-                    <time class="published" datetime="2019-02-05T17:09:00-07:00"> Tue 05 February 2019 </time>
-                    <address class="vcard author">By
-                        <a class="url fn" href="https://um4r12.github.io/author/muhammad-umer-khan.html">Muhammad Umer Khan</a>
-                    </address>
-                </footer><!-- /.post-info -->
-                <div class="entry-content"> <p>I love squash.</p> </div><!-- /.entry-content -->
-        </article></li>
-</ol><!-- /#posts-list -->
-</section><!-- /#content -->
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+<br>
+<p align="center">Edmonton, Ab, Canada<p>
+<div align="center" id="table"></div>
+
+<script type="text/javascript">
+	
+	var date = new Date(); // today
+	var times = prayTimes.getTimes(date, [53, -80], -5);
+	var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+	 prayTimes.adjust( {fajr: 16, dhuhr: '5 min', asr: 'Hanafi', isha: 15} );
+
+	var html = '<table id="timetable">';
+	html += '<tr><th colspan="2">'+ date.toLocaleDateString()+ '</th></tr>';
+	for(var i in list)	{
+		html += '<tr><td>'+ list[i]+ '</td>';
+		html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
+	}
+	html += '</table>';
+	document.getElementById('table').innerHTML = html;
+
+</script>
+  
 </body>
 </html>
